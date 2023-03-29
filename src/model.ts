@@ -1,5 +1,5 @@
-import { createStore, createEvent } from 'effector';
-import { debug } from 'patronum';
+import { createStore, createEvent } from "effector";
+import { debug } from "patronum";
 
 export const buttonClicked = createEvent();
 
