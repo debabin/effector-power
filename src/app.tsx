@@ -9,6 +9,8 @@ import {
 import { IconSun, IconMoonStars } from "@tabler/icons-react";
 
 import { AuthPage } from "./pages/auth";
+import { RegistrationPage } from "./pages/registration";
+import { SearchPage } from "./pages/search";
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>("dark");
@@ -32,7 +34,9 @@ export const App = () => {
             {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
           </ActionIcon>
         </Box>
-        <AuthPage />
+        {/* <AuthPage /> */}
+        {/* <RegistrationPage /> */}
+        <SearchPage />
       </MantineProvider>
     </ColorSchemeProvider>
   );

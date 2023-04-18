@@ -11,11 +11,19 @@ import {
   Button,
   Modal,
   Flex,
+  Center,
+  rem,
+  Box,
 } from "@mantine/core";
-import { IconFaceId, IconAt, IconLock } from "@tabler/icons-react";
+import {
+  IconFaceId,
+  IconAt,
+  IconLock,
+  IconArrowLeft,
+} from "@tabler/icons-react";
 
-export const AuthPage = () => {
-  return (
+export const AuthPage = () => (
+  <>
     <Container size={420} my={40} w="100%" h="100vh">
       <Modal
         opened={false}
@@ -81,6 +89,24 @@ export const AuthPage = () => {
           Use face id
         </Button>
       </Paper>
+
+      <Title align="center">Forgot your password?</Title>
+      <Text c="dimmed" fz="sm" ta="center">
+        Enter your email to get a reset link
+      </Text>
+
+      <Paper withBorder shadow="md" p={30} radius="md" mt="xl">
+        <TextInput label="Your email" placeholder="me@mantine.dev" required />
+        <Group position="apart" mt="lg">
+          <Anchor color="dimmed" size="sm">
+            <Center inline>
+              <IconArrowLeft size={rem(12)} stroke={1.5} />
+              <Box ml={5}>Back to the login page</Box>
+            </Center>
+          </Anchor>
+          <Button>Reset password</Button>
+        </Group>
+      </Paper>
     </Container>
-  );
-};
+  </>
+);
