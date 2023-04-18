@@ -12,7 +12,7 @@ import {
 import { Recipe } from "../utils";
 
 interface RecipeCardProps {
-  recipe: any;
+  recipe: Recipe;
 }
 
 export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => (

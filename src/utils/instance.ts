@@ -9,3 +9,8 @@ export const api = axios.create({
     app_key: "5c61b3aea75a67ec7ced14be8a5c81e1",
   },
 });
+
+export const mockapi = axios.create({
+  baseURL: "http://localhost:31299/api",
+  timeout: 1000,
+});
