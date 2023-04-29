@@ -21,7 +21,7 @@
     "core-js": "^3.28.0",
     "effector": "^22.5.0",
     "effector-react": "^22.4.0",
-    "mock-config-server": "^2.0.2",
+    "mock-config-server": "^2.1.0",
     "patronum": "^1.14.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

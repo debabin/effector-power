@@ -1,5 +1,5 @@
 import { AxiosRequestConfig } from "axios";
-import { api } from "./instance";
+import { api, mockapi } from "./instance";
 
 type MealType = "Lunch" | "Snack" | "Breakfast" | "Snack" | "Teatime";
 type Diet =
@@ -72,3 +72,50 @@ export const requestSearchRecipe = ({
   config,
 }: RequestSearchRecipeParams) =>
   api.get<RequestSearchRecipeResponse>("/", { ...config, params });
+
+type SignInParams = {
+  params: {
+    email: string;
+    password: string;
+  };
+  config?: AxiosRequestConfig;
+};
+
+type SignInResponse = {
+  email: string;
+  username: string;
+};
+
+export const signIn = ({ params, config }: SignInParams) =>
+  mockapi.post<SignInResponse>("/signin", { ...config, params });
+
+type SignUpParams = {
+  params: {
+    email: string;
+    password: string;
+    username: string;
+  };
+  config?: AxiosRequestConfig;
+};
+
+type SignUpResponse = {
+  email: string;
+  username: string;
+};
+
+export const signUp = ({ params, config }: SignUpParams) =>
+  mockapi.post<SignUpResponse>("/signin", { ...config, params });
+
+type ResetPasswordParams = {
+  params: {
+    email: string;
+  };
+  config?: AxiosRequestConfig;
+};
+
+type ResetPasswordResponse = {
+  success: boolean;
+};
+
+export const resetPassword = ({ params, config }: ResetPasswordParams) =>
+  mockapi.post<ResetPasswordResponse>("/reset-password", { ...config, params });
