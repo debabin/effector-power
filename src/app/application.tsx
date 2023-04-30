@@ -2,12 +2,12 @@ import {ActionIcon, Box, ColorScheme, ColorSchemeProvider, MantineProvider} from
 import {IconMoonStars, IconSun} from '@tabler/icons-react';
 import {useState} from 'react';
 
-import {LoginPage} from './pages/login';
-import {RegisterPage} from './pages/register';
-import {SearchPage} from './pages/search';
+import {LoginPage} from '../pages/login';
+import {RegisterPage} from '../pages/register';
+import {SearchPage} from '../pages/search';
 
 export const App = () => {
-  const [colorScheme, setColorScheme] = useState<ColorScheme>('dark');
+  const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === 'dark' ? 'light' : 'dark'));
   const dark = colorScheme === 'dark';
