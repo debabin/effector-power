@@ -31,6 +31,8 @@ const $formValid = every({
   predicate: null,
 });
 
+//#region logic
+
 reset({
   clock: pageMounted,
   target: [$email, $emailError, $password, $passwordError, $webauthnPending, $error],
@@ -78,6 +80,8 @@ sample({
 });
 
 $error.on(signInFx.failData, (_, error) => error);
+
+//#endregion webauthn
 
 function isEmailValid(email: string) {
   return email.includes('@') && email.length > 5;
