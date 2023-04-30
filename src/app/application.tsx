@@ -25,9 +25,9 @@ export const App = () => {
             {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
           </ActionIcon>
         </Box>
-        {/* <AuthPage /> */}
+        <LoginPage />
         {/* <RegistrationPage /> */}
-        <SearchPage />
+        {/* <SearchPage /> */}
       </MantineProvider>
     </ColorSchemeProvider>
   );
