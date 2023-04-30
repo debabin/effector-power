@@ -1,24 +1,20 @@
 import {
   Anchor,
-  Box,
   Button,
-  Center,
-  Checkbox,
   Container,
   Group,
   Input,
   Paper,
   PasswordInput,
   PinInput,
-  rem,
   Text,
   TextInput,
   Title,
 } from '@mantine/core';
-import {IconArrowLeft, IconAt, IconLock, IconPhone, IconUser} from '@tabler/icons-react';
+import {IconAt, IconLock, IconPhone, IconUser} from '@tabler/icons-react';
 import {IMaskInput} from 'react-imask';
 
-export const RegistrationPage = () => (
+export const RegisterPage = () => (
   <>
     <Container size={420} my={40} w="100%" h="100vh">
       <Title

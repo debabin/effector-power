@@ -11,14 +11,12 @@
   "plugins": ["@trivago/prettier-plugin-sort-imports"],
   "importOrder": [
     "<THIRD_PARTY_MODULES>",
-    "^~/i18n",
     "^~/pages",
     "^~/layouts",
     "^~/widgets",
     "^~/features",
     "^~/entities",
     "^~/shared",
-    "^~/ui",
     "^[./]"
   ],
   "importOrderSeparation": true,

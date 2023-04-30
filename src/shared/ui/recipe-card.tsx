@@ -1,7 +1,7 @@
 import {ActionIcon, Badge, Button, Card, Group, Image, Table, Text} from '@mantine/core';
 import {IconHeart} from '@tabler/icons-react';
 
-import {Recipe} from '../utils';
+import {Recipe} from '../api';
 
 interface RecipeCardProps {
   recipe: Recipe;

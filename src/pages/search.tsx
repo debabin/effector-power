@@ -17,10 +17,10 @@ import {
 import {IconCheese, IconMoodSad} from '@tabler/icons-react';
 import React from 'react';
 
-import {RecipeCard} from '../components/RecipeCard';
-import {requestSearchRecipe} from '../utils';
-import {allergies, mealTypes, nutrients} from '../utils/recipe';
-import {useIntersection} from '../utils/useIntersection';
+import {requestSearchRecipe} from '~/shared/api';
+import {useIntersection} from '~/shared/lib/intersection';
+import {allergies, mealTypes, nutrients} from '~/shared/mocks/recipe';
+import {RecipeCard} from '~/shared/ui';
 
 requestSearchRecipe({params: {q: 'coffee'}}).then(console.log);
 

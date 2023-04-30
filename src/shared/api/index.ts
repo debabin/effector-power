@@ -1,6 +1,6 @@
 import {AxiosRequestConfig} from 'axios';
 
-import {api, mockapi} from './instance';
+import {api, mockapi} from './request';
 
 type MealType = 'Lunch' | 'Snack' | 'Breakfast' | 'Snack' | 'Teatime';
 type Diet = 'balanced' | 'high-fiber' | 'high-protein' | 'low-carb' | 'low-fat' | 'low-sodium';

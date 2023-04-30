@@ -2,8 +2,8 @@ import {ActionIcon, Box, ColorScheme, ColorSchemeProvider, MantineProvider} from
 import {IconMoonStars, IconSun} from '@tabler/icons-react';
 import {useState} from 'react';
 
-import {AuthPage} from './pages/auth';
-import {RegistrationPage} from './pages/registration';
+import {LoginPage} from './pages/login';
+import {RegisterPage} from './pages/register';
 import {SearchPage} from './pages/search';
 
 export const App = () => {

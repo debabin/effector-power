@@ -17,7 +17,7 @@ import {
 } from '@mantine/core';
 import {IconArrowLeft, IconAt, IconFaceId, IconLock} from '@tabler/icons-react';
 
-export const AuthPage = () => (
+export const LoginPage = () => (
   <>
     <Container size={420} my={40} w="100%" h="100vh">
       <Modal opened={false} onClose={close} title="Verify yout identity" centered>
