@@ -1,28 +1,22 @@
 import {
-  TextInput,
-  PasswordInput,
-  Checkbox,
   Anchor,
-  Paper,
-  Title,
-  Text,
-  Container,
-  Group,
+  Box,
   Button,
   Center,
-  rem,
-  Box,
+  Checkbox,
+  Container,
+  Group,
   Input,
+  Paper,
+  PasswordInput,
   PinInput,
-} from "@mantine/core";
-import {
-  IconAt,
-  IconUser,
-  IconLock,
-  IconArrowLeft,
-  IconPhone,
-} from "@tabler/icons-react";
-import { IMaskInput } from "react-imask";
+  rem,
+  Text,
+  TextInput,
+  Title,
+} from '@mantine/core';
+import {IconArrowLeft, IconAt, IconLock, IconPhone, IconUser} from '@tabler/icons-react';
+import {IMaskInput} from 'react-imask';
 
 export const RegistrationPage = () => (
   <>
@@ -37,7 +31,7 @@ export const RegistrationPage = () => (
         Welcome back!
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
-        Do not have an account yet?{" "}
+        Do not have an account yet?{' '}
         <Anchor size="sm" component="button">
           Create account
         </Anchor>

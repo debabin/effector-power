@@ -1,21 +1,13 @@
-import { IconHeart } from "@tabler/icons-react";
-import {
-  Card,
-  Image,
-  Text,
-  Group,
-  Badge,
-  Button,
-  ActionIcon,
-  Table,
-} from "@mantine/core";
-import { Recipe } from "../utils";
+import {ActionIcon, Badge, Button, Card, Group, Image, Table, Text} from '@mantine/core';
+import {IconHeart} from '@tabler/icons-react';
+
+import {Recipe} from '../utils';
 
 interface RecipeCardProps {
   recipe: Recipe;
 }
 
-export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => (
+export const RecipeCard: React.FC<RecipeCardProps> = ({recipe}) => (
   <Card withBorder radius="md" p="sm">
     <Card.Section mt="md" p="md">
       <Image radius="md" src={recipe.image} alt={recipe.label} height={200} />
@@ -39,8 +31,8 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => (
         <Text fz="xs" mt="xs">
           {recipe.healthLabels
             .splice(0, 4)
-            .map((label) => label.replace("-", " "))
-            .join(" • ")}
+            .map((label) => label.replace('-', ' '))
+            .join(' • ')}
         </Text>
       )}
     </Card.Section>
@@ -54,21 +46,20 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => (
           <tr>
             <td>protein</td>
             <td>
-              {Math.floor(recipe.totalNutrients.PROCNT.quantity)}{" "}
+              {Math.floor(recipe.totalNutrients.PROCNT.quantity)}{' '}
               {recipe.totalNutrients.PROCNT.unit}
             </td>
           </tr>
           <tr>
             <td>fat</td>
             <td>
-              {Math.floor(recipe.totalNutrients.FAT.quantity)}{" "}
-              {recipe.totalNutrients.FAT.unit}
+              {Math.floor(recipe.totalNutrients.FAT.quantity)} {recipe.totalNutrients.FAT.unit}
             </td>
           </tr>
           <tr>
             <td>carb</td>
             <td>
-              {Math.floor(recipe.totalNutrients.CHOCDF.quantity)}{" "}
+              {Math.floor(recipe.totalNutrients.CHOCDF.quantity)}{' '}
               {recipe.totalNutrients.CHOCDF.unit}
             </td>
           </tr>
@@ -76,7 +67,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({ recipe }) => (
       </Table>
     </Card.Section>
     <Group mt="xs">
-      <Button radius="md" style={{ flex: 1 }}>
+      <Button radius="md" style={{flex: 1}}>
         Show details
       </Button>
       <ActionIcon variant="default" radius="md" size={36}>

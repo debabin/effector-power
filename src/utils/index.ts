@@ -1,14 +1,9 @@
-import { AxiosRequestConfig } from "axios";
-import { api, mockapi } from "./instance";
+import {AxiosRequestConfig} from 'axios';
 
-type MealType = "Lunch" | "Snack" | "Breakfast" | "Snack" | "Teatime";
-type Diet =
-  | "balanced"
-  | "high-fiber"
-  | "high-protein"
-  | "low-carb"
-  | "low-fat"
-  | "low-sodium";
+import {api, mockapi} from './instance';
+
+type MealType = 'Lunch' | 'Snack' | 'Breakfast' | 'Snack' | 'Teatime';
+type Diet = 'balanced' | 'high-fiber' | 'high-protein' | 'low-carb' | 'low-fat' | 'low-sodium';
 type Ingr = `${number}+` | `${number}-${number}` | number;
 type Calories = `${number}+` | `${number}-${number}` | number;
 type Time = `${number}+` | `${number}-${number}` | number;
@@ -42,7 +37,7 @@ export type Recipe = {
   dietLabels: string[];
   dishType: string[];
   totalNutrients: {
-    [key: string]: { label: string; quantity: number; unit: string };
+    [key: string]: {label: string; quantity: number; unit: string};
   };
   healthLabels: string[];
   image: string;
@@ -67,11 +62,8 @@ type RequestSearchRecipeResponse = {
   more: boolean;
 };
 
-export const requestSearchRecipe = ({
-  params,
-  config,
-}: RequestSearchRecipeParams) =>
-  api.get<RequestSearchRecipeResponse>("/", { ...config, params });
+export const requestSearchRecipe = ({params, config}: RequestSearchRecipeParams) =>
+  api.get<RequestSearchRecipeResponse>('/', {...config, params});
 
 type SignInParams = {
   params: {
@@ -86,8 +78,8 @@ type SignInResponse = {
   username: string;
 };
 
-export const signIn = ({ params, config }: SignInParams) =>
-  mockapi.post<SignInResponse>("/signin", { ...config, params });
+export const signIn = ({params, config}: SignInParams) =>
+  mockapi.post<SignInResponse>('/signin', {...config, params});
 
 type SignUpParams = {
   params: {
@@ -103,8 +95,8 @@ type SignUpResponse = {
   username: string;
 };
 
-export const signUp = ({ params, config }: SignUpParams) =>
-  mockapi.post<SignUpResponse>("/signin", { ...config, params });
+export const signUp = ({params, config}: SignUpParams) =>
+  mockapi.post<SignUpResponse>('/signin', {...config, params});
 
 type ResetPasswordParams = {
   params: {
@@ -117,5 +109,5 @@ type ResetPasswordResponse = {
   success: boolean;
 };
 
-export const resetPassword = ({ params, config }: ResetPasswordParams) =>
-  mockapi.post<ResetPasswordResponse>("/reset-password", { ...config, params });
+export const resetPassword = ({params, config}: ResetPasswordParams) =>
+  mockapi.post<ResetPasswordResponse>('/reset-password', {...config, params});
