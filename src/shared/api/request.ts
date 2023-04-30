@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {createEffect} from 'effector';
 
 export const api = axios.create({
   baseURL: 'https://api.edamam.com/api/recipes/v2',
@@ -13,4 +14,21 @@ export const api = axios.create({
 export const mockapi = axios.create({
   baseURL: 'http://localhost:31299/api',
   timeout: 1000,
+  validateStatus: (status) => status >= 200 && status < 300,
+});
+
+interface Request {
+  path: string;
+  method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
+  body?: unknown;
+}
+
+export const requestFx = createEffect<Request, any>((request) => {
+  return mockapi({
+    method: request.method,
+    url: request.path,
+    data: request.body,
+  })
+    .then((response) => response.data)
+    .catch((response) => Promise.reject(response.response.data));
 });

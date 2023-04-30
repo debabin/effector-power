@@ -2,7 +2,7 @@ import {ActionIcon, Box, ColorScheme, ColorSchemeProvider, MantineProvider} from
 import {IconMoonStars, IconSun} from '@tabler/icons-react';
 import {useState} from 'react';
 
-import {LoginPage} from '../pages/login';
+import {LoginPage} from '../pages/login/page';
 import {RegisterPage} from '../pages/register';
 import {SearchPage} from '../pages/search';
 
@@ -26,7 +26,7 @@ export const App = () => {
           </ActionIcon>
         </Box>
         <LoginPage />
-        {/* <RegistrationPage /> */}
+        {/* <RegisterPage /> */}
         {/* <SearchPage /> */}
       </MantineProvider>
     </ColorSchemeProvider>

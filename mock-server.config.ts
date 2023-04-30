@@ -9,7 +9,7 @@ export const mockServerConfig: MockServerConfig = {
         method: 'post',
         routes: [
           {
-            data: {error: 'unvalid data'},
+            data: {error: 'invalid_request'},
             interceptors: {
               response: (data, {setStatusCode}) => {
                 setStatusCode(400);
@@ -18,10 +18,25 @@ export const mockServerConfig: MockServerConfig = {
             },
           },
           {
-            data: {email: 'sergeisova@gmail.com', username: 'sergei sova'},
+            data: {error: 'invalid_credentials'},
             entities: {
               body: {
-                email: 'sergeisova@gmail.com',
+                email: 'sergeysova@gmail.com',
+              },
+            },
+            interceptors: {
+              response: (data, {setStatusCode}) => {
+                setStatusCode(403);
+                return data;
+              },
+            },
+          },
+          {
+            data: {email: 'sergeysova@gmail.com', username: 'sergeysova'},
+            entities: {
+              body: {
+                email: 'sergeysova@gmail.com',
+                password: 'qweasd123',
               },
             },
             interceptors: {

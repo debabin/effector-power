@@ -1,6 +1,7 @@
 import {AxiosRequestConfig} from 'axios';
+import {createEffect} from 'effector';
 
-import {api, mockapi} from './request';
+import {api, mockapi, requestFx} from './request';
 
 type MealType = 'Lunch' | 'Snack' | 'Breakfast' | 'Snack' | 'Teatime';
 type Diet = 'balanced' | 'high-fiber' | 'high-protein' | 'low-carb' | 'low-fat' | 'low-sodium';
@@ -65,21 +66,26 @@ type RequestSearchRecipeResponse = {
 export const requestSearchRecipe = ({params, config}: RequestSearchRecipeParams) =>
   api.get<RequestSearchRecipeResponse>('/', {...config, params});
 
-type SignInParams = {
-  params: {
-    email: string;
-    password: string;
-  };
-  config?: AxiosRequestConfig;
-};
-
-type SignInResponse = {
+export type User = {
   email: string;
   username: string;
 };
 
-export const signIn = ({params, config}: SignInParams) =>
-  mockapi.post<SignInResponse>('/signin', {...config, params});
+interface SignIn {
+  email: string;
+  password: string;
+}
+
+export type SignInError = {error: 'invalid_credentials'} | {error: 'invalid_request'};
+
+export const signInFx = createEffect<SignIn, User, SignInError>(async (form) => {
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  return requestFx({
+    path: '/signin',
+    method: 'POST',
+    body: form,
+  });
+});
 
 type SignUpParams = {
   params: {
