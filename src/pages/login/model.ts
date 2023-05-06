@@ -2,6 +2,9 @@ import {attach, createEffect, createEvent, createStore, sample} from 'effector';
 import {and, every, not, or, reset} from 'patronum';
 
 import * as api from '~/shared/api';
+import {routes} from '~/shared/routing';
+
+export const currentRoute = routes.auth.login;
 
 const signInFx = attach({effect: api.signInFx});
 
@@ -32,6 +35,8 @@ const $formValid = every({
 });
 
 //#region logic
+
+currentRoute.opened.watch(() => console.info('Login route opened'));
 
 reset({
   clock: pageMounted,

@@ -2,9 +2,7 @@ import {ActionIcon, Box, ColorScheme, ColorSchemeProvider, MantineProvider} from
 import {IconMoonStars, IconSun} from '@tabler/icons-react';
 import {useState} from 'react';
 
-import {LoginPage} from '../pages/login/page';
-import {RegisterPage} from '../pages/register';
-import {SearchPage} from '../pages/search';
+import {Pages} from '~/pages';
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -25,9 +23,7 @@ export const App = () => {
             {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
           </ActionIcon>
         </Box>
-        <LoginPage />
-        {/* <RegisterPage /> */}
-        {/* <SearchPage /> */}
+        <Pages />
       </MantineProvider>
     </ColorSchemeProvider>
   );
