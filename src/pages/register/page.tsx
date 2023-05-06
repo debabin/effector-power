@@ -12,7 +12,10 @@ import {
   Title,
 } from '@mantine/core';
 import {IconAt, IconLock, IconPhone, IconUser} from '@tabler/icons-react';
+import {Link} from 'atomic-router-react';
 import {IMaskInput} from 'react-imask';
+
+import {routes} from '~/shared/routing';
 
 export const RegisterPage = () => (
   <>
@@ -27,9 +30,9 @@ export const RegisterPage = () => (
         Welcome back!
       </Title>
       <Text color="dimmed" size="sm" align="center" mt={5}>
-        Do not have an account yet?{' '}
-        <Anchor size="sm" component="button">
-          Create account
+        Already have an account?{' '}
+        <Anchor size="sm" component={Link} to={routes.auth.login}>
+          Log in
         </Anchor>
       </Text>
 

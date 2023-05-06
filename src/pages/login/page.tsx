@@ -16,8 +16,11 @@ import {
   Title,
 } from '@mantine/core';
 import {IconArrowLeft, IconAt, IconFaceId, IconLock} from '@tabler/icons-react';
+import {Link} from 'atomic-router-react';
 import {useUnit} from 'effector-react';
 import {FormEventHandler, useEffect} from 'react';
+
+import {routes} from '~/shared/routing';
 
 import {
   $email,
@@ -74,7 +77,7 @@ export function LoginPage() {
         </Title>
         <Text color="dimmed" size="sm" align="center" mt={5}>
           Do not have an account yet?{' '}
-          <Anchor size="sm" component="button">
+          <Anchor component={Link} size="sm" to={routes.auth.register}>
             Create account
           </Anchor>
         </Text>

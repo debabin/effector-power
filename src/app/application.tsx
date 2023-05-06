@@ -1,8 +1,11 @@
 import {ActionIcon, Box, ColorScheme, ColorSchemeProvider, MantineProvider} from '@mantine/core';
 import {IconMoonStars, IconSun} from '@tabler/icons-react';
+import {RouterProvider} from 'atomic-router-react';
 import {useState} from 'react';
 
 import {Pages} from '~/pages';
+
+import {router} from '~/shared/routing';
 
 export const App = () => {
   const [colorScheme, setColorScheme] = useState<ColorScheme>('light');
@@ -23,7 +26,9 @@ export const App = () => {
             {dark ? <IconSun size="1.1rem" /> : <IconMoonStars size="1.1rem" />}
           </ActionIcon>
         </Box>
-        <Pages />
+        <RouterProvider router={router}>
+          <Pages />
+        </RouterProvider>
       </MantineProvider>
     </ColorSchemeProvider>
   );
