@@ -14,6 +14,14 @@ export default defineConfig({
     babel({extensions: ['.ts', '.tsx'], babelHelpers: 'bundled', skipPreflightCheck: true}),
     react({fastRefresh: false}),
   ],
+  server: {
+    proxy: {
+      '/api': {
+        target: 'http://localhost:31299',
+        changeOrigin: true,
+      },
+    },
+  },
   resolve: {
     alias: [
       {

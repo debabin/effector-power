@@ -87,6 +87,16 @@ export const signInFx = createEffect<SignIn, User, SignInError>(async (form) => 
   });
 });
 
+export type SessionGetError = {error: 'unauthorized'};
+
+export const sessionGetFx = createEffect<void, User, SessionGetError>(async () => {
+  await new Promise((resolve) => setTimeout(resolve, 600));
+  return requestFx({
+    path: '/session',
+    method: 'GET',
+  });
+});
+
 type SignUpParams = {
   params: {
     email: string;

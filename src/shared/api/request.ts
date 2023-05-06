@@ -12,7 +12,7 @@ export const api = axios.create({
 });
 
 export const mockapi = axios.create({
-  baseURL: 'http://localhost:31299/api',
+  baseURL: '/api',
   timeout: 1000,
   validateStatus: (status) => status >= 200 && status < 300,
 });
