@@ -73,6 +73,7 @@ export const mockServerConfig: MockServerConfig = {
             data: {email: 'sergeysova@gmail.com', username: 'sergeysova'},
             interceptors: {
               response: (data, {request, setStatusCode}) => {
+                console.log(request.headers.cookie);
                 if (request.headers.cookie === 'token=auth-user-token') return data;
 
                 setStatusCode(401);

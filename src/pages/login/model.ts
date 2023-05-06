@@ -3,14 +3,14 @@ import {and, every, not, or, reset} from 'patronum';
 
 import * as api from '~/shared/api';
 import {routes} from '~/shared/routing';
+import {chainAnonymous, sessionRequestFx} from '~/shared/session';
 
 export const currentRoute = routes.auth.login;
+export const anonymousRoute = chainAnonymous(currentRoute, {
+  otherwise: routes.search.open,
+});
 
 const signInFx = attach({effect: api.signInFx});
-
-const showAlertFx = createEffect((title: string) => {
-  alert(title);
-});
 
 export const pageMounted = createEvent();
 
@@ -36,7 +36,7 @@ const $formValid = every({
 
 //#region logic
 
-currentRoute.opened.watch(() => console.info('Login route opened'));
+anonymousRoute.opened.watch(() => console.info('Login route opened'));
 
 reset({
   clock: pageMounted,
@@ -80,8 +80,7 @@ sample({
 
 sample({
   clock: signInFx.done,
-  fn: () => 'Success',
-  target: showAlertFx,
+  target: sessionRequestFx,
 });
 
 $error.on(signInFx.failData, (_, error) => error);
