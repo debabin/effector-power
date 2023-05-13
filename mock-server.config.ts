@@ -53,13 +53,25 @@ export const mockServerConfig: MockServerConfig = {
         method: 'post',
         routes: [
           {
-            data: {
-              username: 'sergei sova',
+            entities: {
+              body: {
+                username: 'dima',
+              },
             },
+            data: {error: 'user_exist'},
+            interceptors: {
+              response: (data, {setStatusCode}) => {
+                setStatusCode(403);
+                return data;
+              },
+            },
+          },
+          {
+            data: {success: true},
             interceptors: {
               response: (data, {appendHeader, request}) => {
-                appendHeader('Set-Cookie', 'token=auth-user-token');
-                return {...data, email: request.body.email};
+                // appendHeader('Set-Cookie', 'token=auth-user-token');
+                return {...request.body.email};
               },
             },
           },
@@ -73,11 +85,25 @@ export const mockServerConfig: MockServerConfig = {
             data: {email: 'sergeysova@gmail.com', username: 'sergeysova'},
             interceptors: {
               response: (data, {request, setStatusCode}) => {
-                console.log(request.headers.cookie);
                 if (request.headers.cookie === 'token=auth-user-token') return data;
 
                 setStatusCode(401);
                 return {error: 'unauthorized'};
+              },
+            },
+          },
+        ],
+      },
+      {
+        path: '/confirm',
+        method: 'post',
+        routes: [
+          {
+            data: {email: 'sergeysova@gmail.com', username: 'sergeysova'},
+            interceptors: {
+              response: (data, {appendHeader}) => {
+                appendHeader('Set-Cookie', 'token=auth-user-token;Max-Age=3600;Path=/;HttpOnly');
+                return data;
               },
             },
           },

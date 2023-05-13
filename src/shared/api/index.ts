@@ -97,6 +97,35 @@ export const sessionGetFx = createEffect<void, User, SessionGetError>(async () =
   });
 });
 
+interface SignUp {
+  username: string;
+  phone: string;
+  email: string;
+  password: string;
+}
+
+export type SignUpError = {error: 'invalid_credentials'} | {error: 'user_exist'};
+
+export const signUpFx = createEffect<SignUp, null, SignUpError>(async (form) => {
+  return requestFx({
+    path: '/signup',
+    method: 'POST',
+    body: form,
+  });
+});
+
+interface ConfirmPhone {
+  code: string;
+}
+
+export const confirmPhone = createEffect<ConfirmPhone, User>(async (form) => {
+  return requestFx({
+    path: '/confirm',
+    method: 'POST',
+    body: form,
+  });
+});
+
 type SignUpParams = {
   params: {
     email: string;
