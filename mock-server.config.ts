@@ -70,7 +70,7 @@ export const mockServerConfig: MockServerConfig = {
             data: {success: true},
             interceptors: {
               response: (data, {appendHeader, request}) => {
-                // appendHeader('Set-Cookie', 'token=auth-user-token');
+                appendHeader('Set-Cookie', 'token=auth-user-token;Max-Age=3600;Path=/;HttpOnly');
                 return {...request.body.email};
               },
             },
