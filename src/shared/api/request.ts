@@ -21,13 +21,17 @@ interface Request {
   path: string;
   method: 'GET' | 'POST' | 'PUT' | 'PATCH' | 'DELETE';
   body?: unknown;
+  instance?: 'mockapi' | 'api';
 }
 
 export const requestFx = createEffect<Request, any>((request) => {
-  return mockapi({
+  const selectedApi = request.instance === 'api' ? api : mockapi;
+
+  return selectedApi({
     method: request.method,
     url: request.path,
     data: request.body,
+    params: request.params,
   })
     .then((response) => response.data)
     .catch((response) => Promise.reject(response.response.data));
