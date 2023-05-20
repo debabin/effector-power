@@ -31,7 +31,6 @@ export const requestFx = createEffect<Request, any>((request) => {
     method: request.method,
     url: request.path,
     data: request.body,
-    params: request.params,
   })
     .then((response) => response.data)
     .catch((response) => Promise.reject(response.response.data));

@@ -15,7 +15,7 @@ export const RecipeCard: React.FC<RecipeCardProps> = ({recipe}) => (
         {recipe.mealType && recipe.mealType.length && (
           <>
             {recipe.mealType.map((label) => (
-              <Badge fz="xs" mt="xs" color="pink">
+              <Badge key={label} fz="xs" mt="xs" color="pink">
                 {label}
               </Badge>
             ))}
