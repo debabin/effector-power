@@ -58,6 +58,9 @@ type RecipiesSearchDone = {
   count: number;
   hits: {recipe: Recipe}[];
   more: boolean;
+  _links: {
+    next?: {href: string};
+  };
 };
 
 export const recipiesSearchFx = createEffect<RecipiesSearch, RecipiesSearchDone>((form) => {
@@ -80,6 +83,15 @@ export const recipiesSearchFx = createEffect<RecipiesSearch, RecipiesSearchDone>
     instance: 'api',
   });
 });
+
+export const recipiesNextPageFx = createEffect<{nextUrl: string}, RecipiesSearchDone>(({nextUrl}) =>
+  api({
+    method: 'GET',
+    url: nextUrl,
+  })
+    .then((response) => response.data)
+    .catch((response) => Promise.reject(response.response.data)),
+);
 
 export type User = {
   email: string;

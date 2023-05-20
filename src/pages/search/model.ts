@@ -1,5 +1,5 @@
 import {attach, combine, createEvent, createStore, merge, sample} from 'effector';
-import {debounce} from 'patronum';
+import {debounce, not, pending} from 'patronum';
 
 import * as api from '~/shared/api';
 import {MealType, Recipe} from '~/shared/api';
@@ -11,6 +11,7 @@ export const authorizedRoute = chainAuthorized(currentRoute, {
   otherwise: routes.auth.login.open,
 });
 
+export const endOfResultsReached = createEvent();
 export const searchQueryChanged = createEvent<string>();
 export const mealTypeToggled = createEvent<MealType>();
 export const kcalChanged = createEvent<number>();
@@ -21,8 +22,8 @@ const $mealType = createStore<MealType[]>([]);
 const $availableMealTypes = createStore<MealType[]>(['Breakfast', 'Lunch', 'Snack', 'Teatime']);
 export const $kcal = createStore(100);
 
-export const $searching = createStore(false);
 export const $searchResults = createStore<Recipe[]>([]);
+const $nextPageLink = createStore<null | string>(null);
 
 export const $currentMealTypes = combine(
   $mealType,
@@ -41,6 +42,16 @@ const searchFx = attach({
     });
   },
 });
+
+const searchNextPageFx = attach({
+  source: $nextPageLink,
+  async effect(nextUrl) {
+    if (nextUrl) return api.recipiesNextPageFx({nextUrl});
+    throw {message: 'no_next_url'};
+  },
+});
+
+export const $searching = pending({effects: [searchFx, searchNextPageFx]});
 
 sample({
   clock: authorizedRoute.opened,
@@ -66,6 +77,20 @@ debounce({
   target: searchFx,
 });
 
-$searching.on(searchFx.pending, (_, pending) => pending);
-
 $searchResults.on(searchFx.doneData, (_, {hits}) => hits.map((hit) => hit.recipe));
+
+$nextPageLink.on(
+  [searchFx.doneData, searchNextPageFx.doneData],
+  (_, {_links}) => _links.next?.href ?? null,
+);
+
+$searchResults.on(searchNextPageFx.doneData, (list, {hits}) => [
+  ...list,
+  ...hits.map((hit) => hit.recipe),
+]);
+
+sample({
+  clock: endOfResultsReached,
+  filter: not($searching),
+  target: searchNextPageFx,
+});
