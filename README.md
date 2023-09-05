@@ -1,11 +1,5 @@
-# Effector React Vite
+# ☄️ EFFECTOR IN ACTION
 
-[Edit on StackBlitz ⚡️](https://stackblitz.com/edit/effector-react)
+На данном ☄️ стриме мы в месте с разработчиком effector'а научимся мыслить и работать с данной библиотекой. Постараемся ответить на вопросы как и когда нужно использовать effector ☄️
 
-In the box:
-
-- effector v22
-- patronum v1
-- react v18
-- vite v4
-- typescript v4.9.5
+Данный **☄️ EFFECTOR IN ACTION** репозиторий является результатом стримов по react. Все стрим по данному репозиторию можно посмотреть тут в данном [плейлисте](https://youtube.com/playlist?list=PL_trBE0sVQmewyvJ8IuGqoB4zOQtuMw9k&si=7nAqEcYR1bKSPun-).
